@@ -1,0 +1,19 @@
+.grid__wrapper {
+	padding: 200px 40px 0 40px;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(rgba(0, 0, 0, 0.589), rgba(0, 0, 0, 0.63)), url(../../../../public/fondoUsers.jpg);
+	background-position: start;
+	object-fit: cover;
+	background-size: cover;
+}
+
+.custom-grid {
+	background-color: #000000; /* Cambiar color de fondo */
+	color: #ffffff; /* Cambiar color del texto */
+  }
+
+  .custom-cell {
+	background-color: #000000; /* Cambiar color de las celdas */
+  }
+

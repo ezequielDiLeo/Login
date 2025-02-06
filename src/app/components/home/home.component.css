@@ -1,0 +1,15 @@
+.cont-general{
+    display: flex;
+    align-items: center;
+    height: 800px;
+    background: linear-gradient(rgba(10, 5, 12, 0.801), rgba(30, 19, 80, 0.171)), url('../../../../public/gifBucle.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 50px;
+}
+
+.cont-info{
+    color: white;
+    width: 35%;
+}

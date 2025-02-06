@@ -1,0 +1,14 @@
+<div class="cont-navbar">
+    <div class="cont-img">
+       <a routerLink="/home" routerLinkActive="router-link-active" ><img class="imagen" src="space-2.png" alt="logo"></a>  
+    </div>
+    <div class="navbar" [class.shrink]="isScrolled">
+        <div class="cont-enlaces">
+            <a routerLink="/users">Users</a>
+            <a routerLink="/home">Images</a>
+            <a routerLink="/home">innovations</a>
+            <img (click)="logout()" class="img-salida" src="salida.png" alt="exit"/>
+        </div>
+    </div>
+
+</div>

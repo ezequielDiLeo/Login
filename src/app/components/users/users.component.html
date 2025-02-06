@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+<div class="grid__wrapper">
+	<igx-grid #grid1 [data]="Data" [moving]="true" [allowAdvancedFiltering]="true" [autoGenerate]="false" height="500px" width="100%" class="custom-grid">
+
+		<igx-column 
+			field="Users" 
+			header="Users" 
+			[sortable]="true" 
+			[dataType]="'string'" 
+			class="custom-cell">
+		</igx-column>
+		
+		<igx-column 
+			field="Password" 
+			header="Password" 
+			[sortable]="true"  
+			[dataType]="'string'" 
+			class="custom-cell">
+		</igx-column>
+		<igx-column 
+			field="Email" 
+			header="Email" 
+			[sortable]="true" 
+			dataType="string" 
+			class="custom-cell">
+		</igx-column>
+		<igx-column 
+			field="DateUser" 
+			header="User Date" 
+			[sortable]="true" 
+			[dataType]="'date'" 
+			class="custom-cell">
+		</igx-column>
+		<igx-column 
+			field="Discontinued" 
+			header="Discontinued" 
+			[sortable]="true" 
+			[dataType]="'boolean'" 
+			class="custom-cell">
+				<ng-template igxCell let-cell="cell" let-val>
+					<img *ngIf="val" src="https://www.infragistics.com/angular-demos-lob/assets/images/grid/active.png" title="Continued" alt="Continued" />
+					<img *ngIf="!val" src="https://www.infragistics.com/angular-demos-lob/assets/images/grid/expired.png" title="Discontinued" alt="Discontinued" />
+				</ng-template>
+		</igx-column>
+	</igx-grid>
+</div>
