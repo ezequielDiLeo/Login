@@ -1,0 +1,56 @@
+.cont-gen{
+	width: 100%;
+	height: 700px;
+	background: linear-gradient(to right, rgba(0, 0, 0, 0.829), rgba(0, 0, 0, 0)), url(../../../../public/tomerntaSolar.gif);
+	background-position: top;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.cont-info{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 70%;
+	height: 100%;
+	padding: 150px 10px 0 50px;
+	color: white;
+}
+.cont-padding{
+	width: 40%;
+}
+
+.title{
+	font-size: 70px;
+	font-weight: bold;
+	padding-bottom: 50px;
+}
+
+.parrafo{
+	font-size: 18px;
+	padding-bottom: 25px;
+}
+
+.anchor{
+	display: flex;
+	padding-top: 10px;
+}
+.boton{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 200px;
+	height: 50px;
+	background-color: #961d1d;
+	color: white;
+	font-size: 20px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.imgBtn{
+	margin-left: 10px;
+}

@@ -1,0 +1,59 @@
+.cont-general{
+	display: flex;
+	height: 800px;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	background: linear-gradient(to right, rgba(0, 0, 0, 0.87), rgba(0, 0, 0, 0)), url(../../../../public/groenlandia.jpg);
+	background-size: cover;
+}
+.cont-flex{
+	display: flex;
+	width: 70%;
+	height: 100%;
+}
+.cont-texto{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 50%;
+	height: 100%;
+	padding: 140px 10px 0 50px;
+	color: white;
+}
+.title{
+	font-size: 70px;
+	font-weight: bold;
+}
+.texto{
+	font-size: 18px;
+}
+
+.cont-aire{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 50%;
+	height: 100%;
+}
+
+.anchor{
+	display: flex;
+	padding-top: 10px;
+}
+.boton{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 200px;
+	height: 50px;
+	background-color: #961d1d;
+	color: white;
+	font-size: 20px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.imgBtn{
+	margin-left: 10px;
+}

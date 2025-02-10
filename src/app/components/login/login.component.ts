@@ -18,6 +18,7 @@ export class LoginComponent  {
 	private fb = inject(FormBuilder);
 	private router = inject(Router);
 	private apiService = inject(ApiService);
+	isPasswordVisible: boolean = false; // Variable para controlar la visibilidad de la contraseña
 
 	loginForm: FormGroup = this.fb.group({
 		Email: ['', [Validators.required, Validators.email]],
@@ -37,17 +38,32 @@ export class LoginComponent  {
 		this.apiService.postLogin(objeto).subscribe({
 			next: () => {
 					this.router.navigate(['/home']);
+					Swal.fire({ 
+						icon: 'success', 
+						title: 'You logged in successfully.',
+						text: 'Welcome!',
+						background: '#111',
+						color: '#fff',
+						confirmButtonColor: '#fff',
+						confirmButtonText: "Accept",
+						didOpen: () => {
+							const confirmButton = document.querySelector('.swal2-confirm') as HTMLElement;
+							if (confirmButton) {
+								confirmButton.style.color = 'black'; 
+							}
+						  }
+					});
 			},
 			error: (error: any) => {
 				Swal.fire({ 
 					icon: 'error', 
 					title: 'Credenciales Inválidas', 
-					text: 'Por favor, verifique su correo y contraseña e intente de nuevo.', 
-					footer: 'Si no tienes una cuenta, puedes registrarte haciendo clic en el texto inferior "Registrarse".',
+					text: 'Please check your email and password and try again.', 
+					footer: 'If you do not have an existing account, you can register by clicking on the "Register" text below.',
 					background: '#111',
 					color: '#fff',
 					confirmButtonColor: '#fff',
-					confirmButtonText: "Aceptar",
+					confirmButtonText: "Submit",
 					didOpen: () => {
 						const confirmButton = document.querySelector('.swal2-confirm') as HTMLElement;
 						if (confirmButton) {
@@ -58,6 +74,10 @@ export class LoginComponent  {
 			  }
 		});
 	}
+	
+	 togglePasswordVisibility(): void {
+		this.isPasswordVisible = !this.isPasswordVisible;
+	  }
 
 	registrarse() {
 		this.router.navigate(['/register']);

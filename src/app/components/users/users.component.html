@@ -1,9 +1,20 @@
 <app-navbar></app-navbar>
 <div class="grid__wrapper">
+	@if (loading === true) {
+		<loader />
+	}
 	<igx-grid #grid1 [data]="Data" [moving]="true" [allowAdvancedFiltering]="true" [autoGenerate]="false" height="500px" width="100%" class="custom-grid">
 
+		<igx-column
+		field="id"
+		header="Id"
+		[sortable]="true"
+		[dataType]="'number'"
+		class="custom-cell">
+		</igx-column>
+		
 		<igx-column 
-			field="Users" 
+			field="name" 
 			header="Users" 
 			[sortable]="true" 
 			[dataType]="'string'" 
@@ -11,36 +22,29 @@
 		</igx-column>
 		
 		<igx-column 
-			field="Password" 
-			header="Password" 
-			[sortable]="true"  
-			[dataType]="'string'" 
-			class="custom-cell">
-		</igx-column>
-		<igx-column 
-			field="Email" 
+			field="email" 
 			header="Email" 
 			[sortable]="true" 
 			dataType="string" 
 			class="custom-cell">
 		</igx-column>
+		
 		<igx-column 
-			field="DateUser" 
-			header="User Date" 
-			[sortable]="true" 
-			[dataType]="'date'" 
+			field="password" 
+			header="Password" 
+			[sortable]="true"  
+			[dataType]="'string'" 
 			class="custom-cell">
 		</igx-column>
-		<igx-column 
-			field="Discontinued" 
-			header="Discontinued" 
-			[sortable]="true" 
-			[dataType]="'boolean'" 
+		
+		<igx-column
+			header="Delete"
+			[dataType]="'string'" 
 			class="custom-cell">
-				<ng-template igxCell let-cell="cell" let-val>
-					<img *ngIf="val" src="https://www.infragistics.com/angular-demos-lob/assets/images/grid/active.png" title="Continued" alt="Continued" />
-					<img *ngIf="!val" src="https://www.infragistics.com/angular-demos-lob/assets/images/grid/expired.png" title="Discontinued" alt="Discontinued" />
-				</ng-template>
+			<ng-template class="cont-btn" igxCell let-cell="cell">
+				<button class="btnDelete" (click)="deleteUser(cell.row.data.id, cell.row.data.name)">Eliminar</button>
+			</ng-template>
 		</igx-column>
 	</igx-grid>
 </div>
+<app-footer />

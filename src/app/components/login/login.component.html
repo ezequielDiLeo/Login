@@ -1,54 +1,57 @@
 <div class="cont-general">
-    <div class="cont-glass">
-        <div class="cont-form flex flex-col justify-center px-6 py-12 lg:px-8">
-            <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-              <img class="mx-auto h-10 w-auto" src="formulario.png" alt="Company">
-              <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-white">Inicia Sesión en tu cuenta</h2>
-            </div>
-          
-            <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-              <form (ngSubmit)="iniciarSesion()" class="space-y-6" [formGroup]="loginForm" method="POST">          
-                <div>
-                  <label for="Email" class="block text-sm/6 font-medium text-white">Email address</label>
-                  <div class="mt-2">
-                    <input formControlName="Email" type="email" name="Email" id="Email" autocomplete="email" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900  outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" >
-                  </div>
-                  <div *ngIf="loginForm.controls['Email'].invalid && loginForm.controls['Email'].touched" class="mt-0 mb-0 py-0">
-                    <small *ngIf="loginForm.controls['Email'].errors?.['required']" class="text-red-500">El email es obligatorio</small>
-                    <small *ngIf="loginForm.controls['Email'].errors?.['email']" class="text-red-500">El email no es válido.</small>
-                  </div>
-                </div>
-                
+		<div class="cont-glass">
+				<div class="cont-form flex flex-col justify-center px-6 py-12 lg:px-8">
+						<div class="sm:mx-auto sm:w-full sm:max-w-sm">
+							<img class="mx-auto h-10 w-auto" src="formulario.png" alt="Company">
+							<h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-white">Inicia Sesión en tu cuenta</h2>
+						</div>
+					
+						<div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+							<form (ngSubmit)="iniciarSesion()" class="space-y-6" [formGroup]="loginForm" method="POST">          
+								<div>
+									<label for="Email" class="block text-sm/6 font-medium text-white">Email address</label>
+									<div class="mt-2">
+										<input formControlName="Email" type="email" name="Email" id="Email" autocomplete="email" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900  outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" >
+									</div>
+									<div *ngIf="loginForm.controls['Email'].invalid && loginForm.controls['Email'].touched" class="mt-0 mb-0 py-0">
+										<small *ngIf="loginForm.controls['Email'].errors?.['required']" class="text-red-500">El email es obligatorio</small>
+										<small *ngIf="loginForm.controls['Email'].errors?.['email']" class="text-red-500">El email no es válido.</small>
+									</div>
+								</div>
+								
 
-          
-                <div>
-                  <div class="flex items-center justify-between">
-                    <label for="Password" class="block text-sm/6 font-medium text-white">Password</label>
-                    <div class="text-sm">
-                      <a href="#" class="font-semibold text-indigo-300 hover:text-indigo-500">Olvidaste la contraseña?</a>
-                    </div>
-                  </div>
-                  <div class="mt-2">
-                    <input formControlName="Password" type="password" name="Password" id="Password" autocomplete="current-password" class="block w-full  rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" >
-                  </div>
-                  <div *ngIf="loginForm.controls['Password'].invalid && loginForm.controls['Password'].touched" class="mt-0 mb-0 py-0">
-                    <small *ngIf="loginForm.controls['Password'].errors?.['required']" class="text-red-500">La contraseña es obligatoria</small>
-                    <small *ngIf="loginForm.controls['Password'].errors?.['minlength']" class="text-red-500">La contraseña debe tener al menos 6 caracteres.</small>
-                    <small *ngIf="loginForm.controls['Password'].errors?.['pattern']" class="text-red-500"> contiene al menos una letra mayúscula.</small>
-                  </div>
-                </div>
-                
+					
+								<div>
+									<div class="flex items-center justify-between">
+										<label for="Password" class="block text-sm/6 font-medium text-white">Password</label>
+										<div class="text-sm">
+											<a href="#" class="font-semibold text-indigo-300 hover:text-indigo-500">Olvidaste la contraseña?</a>
+										</div>
+									</div>
+									<div class="mt-2 relative">
+										<input formControlName="Password" [type]="isPasswordVisible ? 'text' : 'password'" name="Password" id="Password" autocomplete="current-password" class="block w-full  rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" >
+										<span (click)="togglePasswordVisibility()" class="cursor-pointer span-toggle">
+											<i [class]="isPasswordVisible ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+										</span>
+									</div>
+									<div *ngIf="loginForm.controls['Password'].invalid && loginForm.controls['Password'].touched" class="mt-0 mb-0 py-0">
+										<small *ngIf="loginForm.controls['Password'].errors?.['required']" class="text-red-500">La contraseña es obligatoria</small>
+										<small *ngIf="loginForm.controls['Password'].errors?.['minlength']" class="text-red-500">La contraseña debe tener al menos 6 caracteres.</small>
+										<small *ngIf="loginForm.controls['Password'].errors?.['pattern']" class="text-red-500"> contiene al menos una letra mayúscula.</small>
+									</div>
+								</div>
+								
 
-          
-                <div>
-                  <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Iniciar Sesión</button>
+					
+								<div>
+									<button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Iniciar Sesión</button>
 
-                  <p class="mt-5 text-white font-semibold">Todavía no tienes una cuenta? Haz click en <span (click)="registrarse()" class=" font-semibold text-indigo-500 cursor-pointer hover:text-blue-800">Registrarse</span></p>
-                  
-                </div>
-              </form>
-        
-            </div>
-          </div>
-    </div>
+									<p class="mt-5 text-white font-semibold">Todavía no tienes una cuenta? Haz click en <span (click)="registrarse()" class=" font-semibold text-indigo-500 cursor-pointer hover:text-blue-800">Registrarse</span></p>
+									
+								</div>
+							</form>
+				
+						</div>
+					</div>
+		</div>
 </div>

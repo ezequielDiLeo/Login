@@ -1,15 +1,53 @@
 .cont-general{
-    display: flex;
-    align-items: center;
-    height: 800px;
-    background: linear-gradient(rgba(10, 5, 12, 0.801), rgba(30, 19, 80, 0.171)), url('../../../../public/gifBucle.gif');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 800px;
+	background: linear-gradient(to right, rgba(0, 0, 0, 0.774), rgba(30, 19, 80, 0.041)), url('../../../../public/gifBucle.gif');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding: 50px;
 }
 
 .cont-info{
-    color: white;
-    width: 35%;
+	color: white;
+	width: 35%;
+	height: 65%;
+	display: flex;
+	flex-direction: column;
+	justify-content: end;
+}
+
+.cont-ingo-abajo{
+	width: 100%;
+	height: 35%;
+	display: flex;
+	color: white;
+	align-items: end;
+}
+
+.cont-1{
+	padding-right: 150px;
+	margin-right: 100px;
+	border-top: 1px solid rgb(83, 83, 83);
+}
+.cont-2{
+	padding-right: 155px;
+	margin-right: 100px;
+	border-top: 1px solid rgb(83, 83, 83);
+}
+.cont-3{
+	padding-right: 155px;
+	margin-right: 100px;
+	border-top: 1px solid rgb(83, 83, 83);
+}
+
+.frase{
+	padding-top: 15px;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	display: flex;
+}
+.fr{
+	padding-left: 15px;
 }
