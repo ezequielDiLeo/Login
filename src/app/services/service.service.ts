@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { InterfaceLogin } from '../interfaces/interface-login';
 import { InterfaceRegister } from '../interfaces/interface-register';
 import { Router } from '@angular/router';
@@ -29,6 +29,10 @@ export class ApiService {
 					if (response.UserId) {
 						localStorage.setItem('userId', response.UserId); // Guarda el UserId en el localStorage
 					  }
+					if (response.userName) {
+						this.setUserName(response.userName)
+						localStorage.setItem('userName', response.userName);
+					  }
 				})
 			);
 	}
@@ -45,6 +49,11 @@ export class ApiService {
 		// Verifica si hay un token y lo incluye en los encabezados de la solicitud
 		const headers = token ? new HttpHeaders().set('Authorization', `Bearer ${token}`) : new HttpHeaders();
 		return this._httpClient.get<any[]>(this.baseUrl, { headers });
+	}
+	
+	//CREATER USER...........-
+	createUser(id: any) {
+		return this._httpClient.post(this.baseUrl, id);
 	}
 	
 	
@@ -67,6 +76,37 @@ export class ApiService {
 	private getToken(): string | null {
 		return localStorage.getItem(this.tokenKey);
 	}
+	
+	
+	
+	// -.......... OBTENER USUARIO POR ID ..........-
+	getUserById(id: number): Observable<any> {
+		const token = this.getToken();
+		const headers = token 
+			? new HttpHeaders().set('Authorization', `Bearer ${token}`) 
+			: new HttpHeaders();
+		return this._httpClient.get<any>(`${this.baseUrl}/${id}`, { headers });
+	  }
+	  
+	  // -............ PUT USUARIO .............-
+	  // Actualizar usuario
+	  updateUser(id: number, userData: any): Observable<any> {
+		const token = this.getToken();
+		const headers = token 
+			? new HttpHeaders().set('Authorization', `Bearer ${token}`) 
+			: new HttpHeaders();
+		
+		return this._httpClient.put(`${this.baseUrl}/${id}`, userData, { headers });
+	  }
+	  
+	  
+	private userNameSubject = new BehaviorSubject<string>(localStorage.getItem('userName') || '');
+   	userName$ = this.userNameSubject.asObservable();
+
+	setUserName(userName: string) {
+		localStorage.setItem('userName', userName);
+		this.userNameSubject.next(userName);
+	}
 
  
 	//AUTHENTICATED
@@ -84,6 +124,8 @@ export class ApiService {
 	//  -.......... LOGOUT ..........-
 	logout(): void {
 		localStorage.removeItem(this.tokenKey);
+		localStorage.removeItem('userName');		
+		localStorage.removeItem('userId');		
 		this._router.navigate(['/login']);
 	}
 

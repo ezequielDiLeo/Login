@@ -1,0 +1,29 @@
+<app-navbar />
+<div class="innovations">
+	<div class="cont-imgs">
+		<div class="img-1"></div>
+		<div class="img-2"></div>
+		<div class="img-3"></div>
+	</div>
+	<div class="cont-info">
+		<div class="cont-w">
+			<h2 class="title-info">Impacts & Benefits</h2>
+			<p class="pr-info">The James Webb Telescope is playing a unique and profound role in transforming our understanding of astrophysics and the origins of galaxies, stars, and planetary systems. To carry out its mission, several new, innovative, and powerful technologies have been developed, ranging from optics to detectors and thermal control systems.</p>
+			<p class="span"><a class="a-info">Download Webb Spinoffs About the <span class="span-info"> Impacts </span> and <span class="span-info"> Benefits </span> <img class="img-info" src="link.png" alt=""></a></p>
+		</div>
+	</div>
+	<div class="cont-general">
+		<div class="cont-innov">
+			<h1 class="h1-in">Innovaciones de la NASA</h1>
+			<div class="cont-for">
+				<div *ngFor="let innovation of innovations" class="innovation">
+				  <h2 class="h2-genral">{{ innovation.name }}</h2>
+				  <img class="w-full h-60" [src]="innovation.image" alt="{{ innovation.name }}">
+				  <p class="py-2.5">{{ innovation.description }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<app-footer></app-footer>

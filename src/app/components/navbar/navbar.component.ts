@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
 	isScrolled = false;
 	Data: any[] = [];
 	private _apiService = inject(ApiService);
-	// userNames: string[] = [];
+	userName: string = '';
 
 	@HostListener('window:scroll', ['$event'])
 	onWindowScroll() {
@@ -29,30 +29,29 @@ export class NavbarComponent implements OnInit {
 	constructor( private router: Router) { }
 	
 	ngOnInit(): void {
-		// this.getUser()
+		this.getUserFromApi()
+		this._apiService.userName$.subscribe(name => {
+			this.userName = name;
+		})		
 	}
 
-	// getUser(){
-	// 	const userId = localStorage.getItem('userId');  // Recupera el UserId desde el localStorage
-
-  //   if (userId) {
-  //     this._apiService.getUsers().subscribe((users: any[]) => {
-  //       const user = users.find(u => u.id == parseInt(userId));  // Encuentra el usuario por el id
-  //       if (user) {
-  //         this.userNames = user.name;  // Asigna el nombre del usuario logueado
-  //       }
-  //     });
-  //   }
-  // }
+	getUserFromApi() {
+		const storedName = localStorage.getItem('userName');
+		if (storedName) {
+			this.userName = storedName;
+		} else {
+			console.log('⚠️ Nombre no encontrado en localStorage');
+		}
+	}
 
 	logout() {
 		Swal.fire({
-			title: '¿Estás seguro?',
-			text: '¿Quieres cerrar sesión?',
+			title: 'Are you sure?',
+			text: 'Do you want to log out?',
 			icon: 'warning',
 			showCancelButton: true,
-			confirmButtonText: 'Sí',
-			cancelButtonText: 'Cancelar',
+			confirmButtonText: 'Yes',
+			cancelButtonText: 'Cancel',
 			background: '#111',
 			color: '#fff',
 			confirmButtonColor: '#fff',
@@ -64,7 +63,7 @@ export class NavbarComponent implements OnInit {
 		}
 		}).then((result) => {
 			if (result.value) {
-				this._apiService.logout()
+				this._apiService.logout();
 				this.router.navigate(['/login']);
 			}
 		});

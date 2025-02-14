@@ -36,3 +36,201 @@
 	background-color: rgb(255, 2, 2);
 	color: #ffffff;
   }
+  
+  .cont-btns{
+	height: 100px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: end;
+  }
+  
+  .add{
+	display: flex;
+	width: 110px;
+	background-color: #ffffffda;
+	justify-content: center;
+	align-items: center;
+	transition: all ease 0.8s;
+  }
+  .add:hover{
+	transform: scaleX(1.1);
+	background: radial-gradient(circle, rgba(27, 13, 90, 0.781) 10%, rgba(0, 0, 0, 0.527) 90%);
+	color: white;
+	border: 1px solid rgba(255, 255, 255, 0.589);
+  }
+
+  
+  /* -........... EDITAR ...........- */
+  .context-menu {
+	width: 150px;
+	height: 35px;
+	display: flex;
+	align-items: center;
+	position: absolute;
+	background: rgb(104, 104, 104);
+	color: rgb(255, 255, 255);
+	list-style: none;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+	z-index: 1000;
+	font-weight: 600;
+	padding-left: 10px;
+  }
+
+.cont-a{
+	display: flex;
+	align-items: center;
+	width: 100%;
+  }
+  
+  .context-menu li {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	padding-left: 5px;
+	cursor: pointer;
+  }
+  
+  .context-menu:hover {
+	background: rgb(145, 145, 145);
+	color: #ffffff;
+	cursor: pointer;
+  }
+  
+  
+  /* -........... MODAL ..........- */
+  .cont-general-edit{
+	width: 100%;
+	height: 100%;
+	background-color: #000000cb;
+	color: black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 999;
+}
+
+.cont-form-edit {
+	width: 800px;
+	margin: 50px auto;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: rgba(59, 59, 61, 0.89);
+	color: white;
+  }
+  
+  .cont-title{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	font-weight: bolder;
+  }
+  .title-edit{
+	font-size: 25px;
+  }
+  
+  form {
+	display: flex;
+	flex-direction: column;
+  }
+  
+  label {
+	margin-top: 10px;
+	font-weight: bold;
+  }
+  
+  input {
+	padding: 8px;
+	margin-top: 5px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+  }
+  
+  .obligatory{
+	padding-top: 2px;
+	font-size: 13px;
+	color: rgb(184, 184, 184);
+  }
+  
+  .cont-pass{
+	display: flex;
+	flex-direction: column;
+	position: relative;
+  }
+  
+  .span-toggle {
+	position: absolute;
+	top: 38px;
+	right: 0px;
+	cursor: pointer;
+	background-color: #000000;
+	border-radius: 5px;
+	height: 53%;
+	width: 5%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+  
+  button {
+	margin: 15px 15px 0 15px;
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+  }
+  
+  .cont-buttons{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+  
+  .save {
+	width: 35%;
+	background-color: #000000;
+	color: white;
+  }
+  .save:hover {
+	width: 35%;
+	background-color: #242424;
+	color: white;
+  }
+  
+  .cancel{
+	width: 35%;
+	background-color: #a80000;
+	color: white;
+  }
+  .cancel:hover{
+	background-color: #d10202;
+  }
+  
+  .btnDelete {
+	width: 45%;
+	background-color: #a80000;
+	color: white;
+	transition: all ease 0.8s;
+  }
+  .btnDelete:hover {
+	background-color: #d10202;
+	transform: scaleX(1.03);
+  }
+  
+  .input{
+	background-color: #ffffff;
+	color: #000000;
+  }
+  input:focus {
+	outline: none;
+}

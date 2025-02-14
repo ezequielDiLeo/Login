@@ -1,24 +1,21 @@
 <app-navbar></app-navbar>
-<div class="grid__wrapper">
+<div class="grid__wrapper" (contextmenu)="onRightClick($event)">
 	@if (loading === true) {
 		<loader />
 	}
+	
+	<div class="cont-btns">
+		<button class="add" type="submit" (click)="addUser()">Add</button>
+	</div>
+	
 	<igx-grid #grid1 [data]="Data" [moving]="true" [allowAdvancedFiltering]="true" [autoGenerate]="false" height="500px" width="100%" class="custom-grid">
-
-		<igx-column
-		field="id"
-		header="Id"
-		[sortable]="true"
-		[dataType]="'number'"
-		class="custom-cell">
-		</igx-column>
 		
 		<igx-column 
 			field="name" 
 			header="Users" 
 			[sortable]="true" 
 			[dataType]="'string'" 
-			class="custom-cell">
+			class="custom-cell  cursor-pointer">
 		</igx-column>
 		
 		<igx-column 
@@ -26,7 +23,7 @@
 			header="Email" 
 			[sortable]="true" 
 			dataType="string" 
-			class="custom-cell">
+			class="custom-cell  cursor-pointer">
 		</igx-column>
 		
 		<igx-column 
@@ -34,17 +31,57 @@
 			header="Password" 
 			[sortable]="true"  
 			[dataType]="'string'" 
-			class="custom-cell">
+			class="custom-cell  cursor-pointer">
 		</igx-column>
 		
 		<igx-column
 			header="Delete"
 			[dataType]="'string'" 
-			class="custom-cell">
+			class="custom-cell  cursor-pointer">
 			<ng-template class="cont-btn" igxCell let-cell="cell">
-				<button class="btnDelete" (click)="deleteUser(cell.row.data.id, cell.row.data.name)">Eliminar</button>
+				<button class="btnDelete" (click)="deleteUser(cell.row.data.id, cell.row.data.name)">Delete</button>
 			</ng-template>
 		</igx-column>
 	</igx-grid>
 </div>
+  
+@if (menuVisible) {
+	<ul #contextMenu class="context-menu" [ngStyle]="{'top.px': menuY, 'left.px': menuX}">
+		<div class="cont-a"  (click)="editUser()">
+			<img src="editar.png" alt="" class="w-4 h-4">
+			<li class="li">Edit</li>
+		</div>
+	</ul>
+}
+  
+  @if (modalIsOpen) {
+	<div class="cont-general-edit">
+		<div class="cont-form-edit">
+			<div class="cont-title">
+				<h2 class="title-edit">{{isEditingOpen ? "Edit user" : "Add user"}}</h2>
+			</div>			
+			<label for="name">Name</label>
+			<input class="input" id="name" [(ngModel)]="selectedUser.name" type="text" required />
+			
+			<label for="email">e-mail</label>
+			<input class="input" id="email" [(ngModel)]="selectedUser.email" type="email" required />
+			
+			<div class="mt-2 relative cont-pass">
+				<label for="password">Password</label>
+				<input class="input" id="password" [(ngModel)]="selectedUser.password" [type]="isPasswordVisible ? 'text' : 'password'" required />
+				<span class="obligatory">{{ isEditingOpen ? "❗it is obligatory change the password, you can use the same." : ""}}</span>
+				<span (click)="togglePasswordVisibility()" class="cursor-pointer span-toggle">
+					<i [class]="isPasswordVisible ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+				</span>
+			</div>
+			
+			
+			<div class="cont-buttons">
+				<button type="submit" class="save" (click)="saveEdit()">Save</button>
+				<button type="button" class="cancel" (click)="closeModal()">Cancel</button>
+			</div>
+		</div>
+	</div>
+  }
+
 <app-footer />

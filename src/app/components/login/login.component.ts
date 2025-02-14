@@ -37,7 +37,6 @@ export class LoginComponent  {
 		}
 		this.apiService.postLogin(objeto).subscribe({
 			next: () => {
-					this.router.navigate(['/home']);
 					Swal.fire({ 
 						icon: 'success', 
 						title: 'You logged in successfully.',
@@ -52,7 +51,9 @@ export class LoginComponent  {
 								confirmButton.style.color = 'black'; 
 							}
 						  }
-					});
+					}).then((response: any) => {
+						this.router.navigate(['/home']);
+					})
 			},
 			error: (error: any) => {
 				Swal.fire({ 
